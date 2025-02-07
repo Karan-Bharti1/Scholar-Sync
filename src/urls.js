@@ -1,0 +1,1 @@
+ export const studentsGetUrl='https://scholar-sync-backend.vercel.app/students'

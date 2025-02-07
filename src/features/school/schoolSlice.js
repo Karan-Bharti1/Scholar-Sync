@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const schoolSlicer=createSlice({
-
+export const schoolSlice=createSlice({
+name:'school',
+initialState:{},
+reducers:{}
 })
-export default schoolSlicer.reducer
+export default schoolSlice.reducer
