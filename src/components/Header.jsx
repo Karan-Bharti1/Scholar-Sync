@@ -16,8 +16,6 @@ return(
         <NavLink className="nav-link" to="/classes">Classes</NavLink>
         <NavLink className="nav-link" to="/school">School</NavLink>
       
-       
-       
       </ul>
       
     </div>
