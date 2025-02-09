@@ -10,11 +10,11 @@ const StudentView=()=>{
   dispatch(fetchStudents())
    },[])
    return(<>
-{students.status==="loading"&& <p>Loading...</p>}
+{students.status==="loading" && <p>Loading...</p>}
         {students.error && <p>{error}</p>}
-        <ul className="list-group">
+       { students.status!="loading" && <ul className="list-group">
         {students.students.map(student=><li className="list-group-item" key={student._id}>{student.name } (age: {student.age})</li>)}
-        </ul>
+        </ul>}
    </>)
 }
 export default StudentView;

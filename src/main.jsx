@@ -8,6 +8,7 @@ import Classes from './pages/Classes.jsx'
 import School from './pages/School.jsx'
 import { Provider } from 'react-redux'
 import store from './store.js'
+import AddStudentForm from './pages/AddStudent.Form.jsx'
 const router=createBrowserRouter([
   {
     path:"/",
@@ -22,7 +23,9 @@ const router=createBrowserRouter([
   {
     path:"/school",
     element:<School/>
-  }
+  },
+  {path:"/addstudent",
+element:<AddStudentForm/>}
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>

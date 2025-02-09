@@ -6,6 +6,9 @@ export const fetchStudents=createAsyncThunk("students/fetchStudents",async()=>{
    
     return response.data
 })
+export const addSudent=createAsyncThunk("students/addStudent",async()=>{
+const response=await axios.post()
+})
 export const studentsSlicer=createSlice({
 name:"students",
 initialState:{
