@@ -1,9 +1,12 @@
 import { useState } from "react";
 import Header from "../components/Header";
 import StudentForm from "../components/StudentForm";
+import { useDispatch } from "react-redux";
+import { addSudent } from "../features/students/studentsSlicer";
 
 
 const AddStudentForm=()=>{
+    const dispatch=useDispatch()
     const [studentName,setStudentName]=useState({
         name:"",
         age:"",
@@ -22,7 +25,7 @@ setStudentName(prev=>
     }
     const handleSubmit=(event)=>{
 event.preventDefault()
-console .log(studentName)
+dispatch(addSudent(studentName))
     }
 return(<>
 <Header/>
