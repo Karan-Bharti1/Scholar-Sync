@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import store from './store.js'
 import AddStudentForm from './pages/AddStudent.Form.jsx'
 import DisplayStudent from './pages/DisplayStudent.jsx'
+import EditStudent from './pages/EditStudent.jsx'
 const router=createBrowserRouter([
   {
     path:"/",
@@ -30,6 +31,9 @@ element:<AddStudentForm/>},
 {
   path:"/students/:studentId",
   element:<DisplayStudent/>
+},{
+  path:"/edit/students/:studentId",
+  element:<EditStudent/>
 }
 ])
 createRoot(document.getElementById('root')).render(

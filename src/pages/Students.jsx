@@ -6,7 +6,7 @@ const Students=()=>{
     return(<>
     <Header/>
     <main className="container">
-    <h1>Student View</h1>
+    <h2 className="my-3">Student View</h2>
     <Link className="btn btn-warning my-3" to="/addstudent">Add Student</Link>
     <StudentView/>
     </main>

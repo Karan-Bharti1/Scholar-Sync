@@ -12,8 +12,19 @@ const response=await axios.post(studentsPostUrl,studentData,{
         'Content-Type':'application/json'
     }
 })
+
 console.log(response)
 return response.data
+})
+
+export const updateStudentDataAsync=createAsyncThunk("students/updateStudents",async({id,updatedData})=>{
+    const response=await axios.put(`${studentsPostUrl}/${id}`,updatedData,{
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    console.log(response)
+    return response.data
 })
 export const studentsSlicer=createSlice({
 name:"students",
@@ -46,6 +57,20 @@ extraReducers:(builder)=>{
         state.status="rejected"
         state.students=action.payload.message
     })
+    builder.addCase(updateStudentDataAsync.pending,(state,action)=>{
+        state.status="loading"
+    })
+    builder.addCase(updateStudentDataAsync.fulfilled,(state,action)=>{
+        state.status="succeeded"
+        const index = state.students.findIndex((student) => student.id === action.payload.id);
+        if (index !== -1) {
+            state.students[index] = action.payload; 
+          }
+    })
+    builder.addCase(updateStudentDataAsync.rejected, (state, action) => {
+        state.status = "error";
+        // state.error = action.payload.message;
+      })
 }
 })
 export default studentsSlicer.reducer

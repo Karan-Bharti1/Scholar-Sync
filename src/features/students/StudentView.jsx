@@ -4,7 +4,7 @@ import { fetchStudents } from "../students/studentsSlicer";
 import { Link } from "react-router-dom";
 
 const StudentView=()=>{
-   const {students}=useSelector(state=>state)
+   const {students}=useSelector(state=>state.students)
   
    const dispatch=useDispatch()
    useEffect(()=>{
@@ -14,7 +14,7 @@ const StudentView=()=>{
 {students.status==="loading" && <p>Loading...</p>}
         {students.error && <p>{error}</p>}
        { students.status!="loading" && <ul className="list-group">
-        {students.students.map(student=><li className="list-group-item" key={student._id}><Link to={`/students/${student._id}`}>{student.name } (age: {student.age})</Link></li>)}
+        {students.map(student=><li className="list-group-item" key={student._id}><Link to={`/students/${student._id}`}>{student.name } (age: {student.age})</Link></li>)}
         </ul>}
    </>)
 }

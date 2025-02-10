@@ -6,6 +6,7 @@ import { addSudent } from "../features/students/studentsSlicer";
 
 
 const AddStudentForm=()=>{
+    const [successMessage,setSuccessMessage]=useState("")
     const dispatch=useDispatch()
     const [studentName,setStudentName]=useState({
         name:"",
@@ -26,6 +27,8 @@ setStudentName(prev=>
     const handleSubmit=(event)=>{
 event.preventDefault()
 dispatch(addSudent(studentName))
+setSuccessMessage("Data Updated Successfully")
+setTimeout(()=>setSuccessMessage(""),1500)
     }
 return(<>
 <Header/>
@@ -35,7 +38,7 @@ return(<>
     <StudentForm studentName={studentName} handleChange={handleChange} editChange={false}/>
     <button className="btn btn-danger">Add</button>
     </form>
-    
+    <h2 className="text-danger my-3">{successMessage}</h2>
 </main>
 </>)
 }
