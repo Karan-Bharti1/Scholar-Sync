@@ -13,7 +13,7 @@ const response=await axios.post(studentsPostUrl,studentData,{
     }
 })
 
-console.log(response)
+
 return response.data
 })
 
@@ -23,6 +23,11 @@ export const updateStudentDataAsync=createAsyncThunk("students/updateStudents",a
             'Content-Type':'application/json'
         }
     })
+   
+    return response.data
+})
+export const deleteStudentData=createAsyncThunk("students/deleteStudent",async(id)=>{
+    const response=await axios.delete(`${studentsPostUrl}/${id}`)
     console.log(response)
     return response.data
 })
@@ -69,8 +74,19 @@ extraReducers:(builder)=>{
     })
     builder.addCase(updateStudentDataAsync.rejected, (state, action) => {
         state.status = "error";
-        // state.error = action.payload.message;
+        state.error = action.payload.message;
       })
+      .addCase(deleteStudentData.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteStudentData.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.students = state.students.filter((student) => student.id !== action.payload);
+      })
+      .addCase(deleteStudentData.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.payload;
+      });
 }
 })
 export default studentsSlicer.reducer
