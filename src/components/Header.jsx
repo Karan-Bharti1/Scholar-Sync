@@ -15,7 +15,7 @@ return(
         <NavLink className="nav-link" to="/students">Students</NavLink>
         <NavLink className="nav-link" to="/classes">Classes</NavLink>
         <NavLink className="nav-link" to="/school">School</NavLink>
-      
+      <NavLink className="nav-link" to="/teachers">Teachers</NavLink>
       </ul>
       
     </div>
