@@ -12,6 +12,7 @@ import AddStudentForm from './pages/AddStudent.Form.jsx'
 import DisplayStudent from './pages/DisplayStudent.jsx'
 import EditStudent from './pages/EditStudent.jsx'
 import Teachers from './pages/Teachers.jsx'
+import ViewTeacher from './pages/ViewTeacher.jsx'
 const router=createBrowserRouter([
   {
     path:"/",
@@ -38,6 +39,9 @@ element:<AddStudentForm/>},
 },{
   path:"/teachers",
   element:<Teachers/>
+},{
+  path:"/teachers/:teacherId",
+  element:<ViewTeacher/>
 }
 ])
 createRoot(document.getElementById('root')).render(
