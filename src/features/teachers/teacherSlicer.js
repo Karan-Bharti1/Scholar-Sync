@@ -10,6 +10,15 @@ export const   deleteTeacher=createAsyncThunk("teachers/deleteTeacher",async(id)
     console.log(response.data)
     return response.data
 })
+export const addNewTeacher=createAsyncThunk("teachers/addTeachers",async(data)=>{
+    const response=await axios.post(teachersGetUrl,data,{
+        method:'POST',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    return response.data
+})
  export const teacherSlice=createSlice({
     name:"Teachers",
     initialState:{
@@ -39,6 +48,17 @@ export const   deleteTeacher=createAsyncThunk("teachers/deleteTeacher",async(id)
             state.teachers=state.teachers.filter(teacher=>teacher._id===action.payload.id)
         })
         builder.addCase(deleteTeacher.rejected,(state,action)=>{
+            state.status="error"
+            state.error=action.payload.message
+        })
+        builder.addCase(addNewTeacher.pending,(state,action)=>{
+            state.status="loading"
+        })
+        builder.addCase(addNewTeacher.fulfilled,(state,action)=>{
+            state.status="succeeded"
+            state.teachers=state.teachers.push(action.payload)
+        })
+        builder.addCase(addNewTeacher.rejected,(state,action)=>{
             state.status="error"
             state.error=action.payload.message
         })
