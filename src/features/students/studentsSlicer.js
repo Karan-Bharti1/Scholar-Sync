@@ -67,7 +67,7 @@ extraReducers:(builder)=>{
     })
     builder.addCase(updateStudentDataAsync.fulfilled,(state,action)=>{
         state.status="succeeded"
-        const index = state.students.findIndex((student) => student.id === action.payload.id);
+        const index = state.students.findIndex((student) => student._id === action.payload._id);
         if (index !== -1) {
             state.students[index] = action.payload; 
           }

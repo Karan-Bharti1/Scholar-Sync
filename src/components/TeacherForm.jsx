@@ -1,4 +1,4 @@
-const TeacherForm=({teachersData={},handleChange})=>{
+const TeacherForm=({teachersData,handleChange})=>{
     return(<>
      <label htmlFor="teacherName">Name:</label>
     <input type="text" className="form-control" value={teachersData.teacherName} id="teacherName" onChange={handleChange} name="teacherName" required/>
@@ -16,6 +16,6 @@ const TeacherForm=({teachersData={},handleChange})=>{
     <input type="text" className="form-control" value={teachersData.qualification} id="qualification" onChange={handleChange} name="qualification" required/>
     <label htmlFor="resultPercentage">Result Percentage :</label>
     <input type='number' className="form-control" value={teachersData.resultPercentage} id="resultPercentage" onChange={handleChange} name="resultPercentage" required/>
-    <button className="btn btn-danger my-3">Add Teacher</button></>)
+    <button type='submit' className="btn btn-danger my-3">Proceed</button></>)
 }
 export default TeacherForm;

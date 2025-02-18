@@ -37,7 +37,7 @@ const ViewTeacher=()=>{
 <hr/>
 <p className="fs-4"><strong>Result Percentage: </strong>{requiredTeacher?.resultPercentage}</p>
 <hr/>
-<Link className="btn btn-warning">Edit Details</Link> <button onClick={()=>handleDelete(requiredTeacher?._id)} className="btn btn-danger mx-3">Delete</button></>)}
+<Link to={`/editteacher/${requiredTeacher._id}`} className="btn btn-warning">Edit Details</Link> <button onClick={()=>handleDelete(requiredTeacher?._id)} className="btn btn-danger mx-3">Delete</button></>)}
 {deleteTeacherData && (<div>
 <h1>Data Deleted Successfully.</h1>
 <Link to="/teachers" className="btn btn-warning">Teachers</Link>
