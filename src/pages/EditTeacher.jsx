@@ -6,6 +6,7 @@ import { fetchTeachers, updateTeacher } from "../features/teachers/teacherSlicer
 import TeacherForm from "../components/TeacherForm"
 
 const EditTeacher=()=>{
+    const [successMessage,setSuccessMessage]=useState("")
     const [teacher, setTeacher] = useState({
         teacherName: "",
         phoneNumber: "",
@@ -17,6 +18,7 @@ const EditTeacher=()=>{
     
     const {id}=useParams()
     const{ teachers}=useSelector(state=>state.teacherSlice)
+  const {status}=useSelector(state=>state.teacherSlice)
     const dispatch=useDispatch()
     useEffect(()=>{
 dispatch(fetchTeachers())
@@ -37,6 +39,8 @@ dispatch(fetchTeachers())
     const handleSubmit=(e)=>{
        e.preventDefault()
         dispatch(updateTeacher({id:id,data:teacher}))
+        {status==="succeeded" && setSuccessMessage("Data Updated Successfully")}
+setTimeout(()=>setSuccessMessage(""),1500)
     }
     return(<>
     <Header/>
@@ -45,6 +49,7 @@ dispatch(fetchTeachers())
 <form onSubmit={handleSubmit}>
     <TeacherForm teachersData={teacher} handleChange={handleChange}/>
 </form>
+<h2 className="text-danger my-3">{successMessage}</h2>
     </main>
     </>)
 }
