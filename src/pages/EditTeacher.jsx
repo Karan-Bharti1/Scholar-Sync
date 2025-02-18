@@ -30,7 +30,7 @@ dispatch(fetchTeachers())
     const handleChange=(event)=>{
         const {name,value,type}=event.target;
         setTeacher(prev=>({...prev,
-            [name]:type=="number"?parseFloat(value):value}))
+            [name]:type=="number" ?parseFloat(value):value}))
     
     }
     console.log(teacher)

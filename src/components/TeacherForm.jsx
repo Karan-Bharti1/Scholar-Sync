@@ -15,7 +15,7 @@ const TeacherForm=({teachersData,handleChange})=>{
     <label htmlFor="qualification">Qualification :</label>
     <input type="text" className="form-control" value={teachersData.qualification} id="qualification" onChange={handleChange} name="qualification" required/>
     <label htmlFor="resultPercentage">Result Percentage :</label>
-    <input type='number' className="form-control" value={teachersData.resultPercentage} id="resultPercentage" onChange={handleChange} name="resultPercentage" required/>
+    <input type='number' className="form-control" value={teachersData.resultPercentage||""} id="resultPercentage" onChange={handleChange} name="resultPercentage" required/>
     <button type='submit' className="btn btn-danger my-3">Proceed</button></>)
 }
 export default TeacherForm;
