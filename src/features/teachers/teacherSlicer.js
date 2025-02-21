@@ -1,4 +1,4 @@
-import { asyncThunkCreator, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { teachersGetUrl } from "../../urls";
 export const fetchTeachers=createAsyncThunk("teachers/fetchTeachers",async()=>{
@@ -65,7 +65,10 @@ export const updateTeacher=createAsyncThunk("teachers/updateTeachers",async({id,
         })
         builder.addCase(addNewTeacher.fulfilled,(state,action)=>{
             state.status="succeeded"
-            state.teachers=state.teachers.push(action.payload)
+            const index=state.teachers.findIndex(teacher=>teacher._id===action.payload._id)
+            if(index!==-1){
+ state.teachers[index]=action.payload
+            }
         })
         builder.addCase(addNewTeacher.rejected,(state,action)=>{
             state.status="error"
